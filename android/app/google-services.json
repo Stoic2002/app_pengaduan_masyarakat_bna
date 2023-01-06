@@ -1,0 +1,154 @@
+{
+  "project_info": {
+    "project_number": "766766569628",
+    "project_id": "e-pengaduan-64f1d",
+    "storage_bucket": "e-pengaduan-64f1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766766569628:android:865a7698749019fded7559",
+        "android_client_info": {
+          "package_name": "app_layanan_pengaduan_fix.untitled"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766766569628-0vpq2eo7np8h6ovlrngds8pecpqc4dgu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBmrkt0iY3r_bQSs5OzX-pnCbJrJqriiA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766766569628-0vpq2eo7np8h6ovlrngds8pecpqc4dgu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "766766569628-pa8d6kvl5o249embds20r88d0429lhtq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "appLayananPengaduanFix.untitled"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766766569628:android:1e2b0aced4da37e7ed7559",
+        "android_client_info": {
+          "package_name": "com.example.app_pengaduan_masyarakat_bna"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766766569628-0vpq2eo7np8h6ovlrngds8pecpqc4dgu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBmrkt0iY3r_bQSs5OzX-pnCbJrJqriiA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766766569628-0vpq2eo7np8h6ovlrngds8pecpqc4dgu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "766766569628-pa8d6kvl5o249embds20r88d0429lhtq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "appLayananPengaduanFix.untitled"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766766569628:android:5eb277f1fec64c3aed7559",
+        "android_client_info": {
+          "package_name": "com.example.blank_fire_setstate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766766569628-0vpq2eo7np8h6ovlrngds8pecpqc4dgu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBmrkt0iY3r_bQSs5OzX-pnCbJrJqriiA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766766569628-0vpq2eo7np8h6ovlrngds8pecpqc4dgu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "766766569628-pa8d6kvl5o249embds20r88d0429lhtq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "appLayananPengaduanFix.untitled"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766766569628:android:14a4f0582f0d37fbed7559",
+        "android_client_info": {
+          "package_name": "com.example.example"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766766569628-0vpq2eo7np8h6ovlrngds8pecpqc4dgu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBmrkt0iY3r_bQSs5OzX-pnCbJrJqriiA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766766569628-0vpq2eo7np8h6ovlrngds8pecpqc4dgu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "766766569628-pa8d6kvl5o249embds20r88d0429lhtq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "appLayananPengaduanFix.untitled"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
