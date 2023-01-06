@@ -71,12 +71,12 @@ class _tambah_aduanState extends State<tambah_aduan> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: "#DE3163".toColor(),
+        backgroundColor: "#34495E".toColor(),
       ),
       resizeToAvoidBottomInset: false,
       body: Container(
         padding: EdgeInsets.all(15.0),
-        color: "#DE3163".toColor(),
+        color: "#212F3C".toColor(),
         child: Center(
           child: content(),
         ),
@@ -100,15 +100,17 @@ class _tambah_aduanState extends State<tambah_aduan> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                  color: Colors.white,
                   child: TextFormField(
                     controller: judulCon,
                     decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
                         label: Text('Judul',
                             style: TextStyle(
                               fontFamily: 'Poppins',
                             )),
-                        border: OutlineInputBorder()),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20))),
                     validator: (value) {
                       if (value!.isNotEmpty) {
                         return null;
@@ -119,16 +121,18 @@ class _tambah_aduanState extends State<tambah_aduan> {
                   ),
                 ),
                 Container(
-                  color: Colors.white,
                   child: TextFormField(
                     controller: deskCon,
                     maxLines: 4,
                     decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
                         label: Text('Deskripsi',
                             style: TextStyle(
                               fontFamily: 'Poppins',
                             )),
-                        border: OutlineInputBorder()),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20))),
                     validator: (value) {
                       if (value!.isEmpty) {
                         return "deskripsi tidak boleh kosong";
@@ -139,7 +143,6 @@ class _tambah_aduanState extends State<tambah_aduan> {
                   ),
                 ),
                 Container(
-                  color: Colors.white,
                   child: TextFormField(
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -151,7 +154,10 @@ class _tambah_aduanState extends State<tambah_aduan> {
                     controller: dateInput,
                     //editing controller of this TextField
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
                         prefixIcon: Icon(
                             color: Colors.lightBlue,
                             Icons.calendar_today_outlined),
@@ -184,15 +190,17 @@ class _tambah_aduanState extends State<tambah_aduan> {
                   ),
                 ),
                 Container(
-                  color: Colors.white,
                   child: TextFormField(
                     controller: locCon,
                     decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
                         label: Text('Lokasi',
                             style: TextStyle(
                               fontFamily: 'Poppins',
                             )),
-                        border: OutlineInputBorder()),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20))),
                     validator: (value) {
                       if (value!.isEmpty) {
                         return "lokasi tidak boleh kosong";
@@ -209,7 +217,8 @@ class _tambah_aduanState extends State<tambah_aduan> {
                     controller: _imageController,
                     decoration: InputDecoration(
                         hintText: 'foto belum diupload',
-                        border: OutlineInputBorder()),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20))),
                   ),
                 ),
                 Container(
@@ -242,47 +251,48 @@ class _tambah_aduanState extends State<tambah_aduan> {
                   ),
                 ),
                 Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all("#E74C3C".toColor()),
-                            shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all("#2ECC71".toColor()),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder())),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text(' Batal ',
-                            style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold)),
-                      ),
-                      ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all("#2ECC71".toColor()),
-                            shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                RoundedRectangleBorder())),
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            addData(judulCon.text, deskCon.text, locCon.text,
-                                dateInput.text, _img!);
-                            Get.back();
-                          }
-                        },
-                        child: Text('Tambah',
-                            style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold)),
-                      ),
-                    ],
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        addData(judulCon.text, deskCon.text, locCon.text,
+                            dateInput.text, _img!);
+                        Get.back();
+                      }
+                    },
+                    child: Text('Tambah',
+                        style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
                   ),
+                  // child: Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //   children: [
+                  //     // ElevatedButton(
+                  //     //   style: ButtonStyle(
+                  //     //       backgroundColor:
+                  //     //           MaterialStateProperty.all("#E74C3C".toColor()),
+                  //     //       shape: MaterialStateProperty.all<
+                  //     //               RoundedRectangleBorder>(
+                  //     //           RoundedRectangleBorder())),
+                  //     //   onPressed: () {
+                  //     //     Navigator.pop(context);
+                  //     //   },
+                  //     //   child: Text(' Batal ',
+                  //     //       style: TextStyle(
+                  //     //           fontFamily: 'Poppins',
+                  //     //           fontSize: 20,
+                  //     //           fontWeight: FontWeight.bold)),
+                  //     // ),
+
+                  //   ],
+                  // ),
                 )
               ],
             ),

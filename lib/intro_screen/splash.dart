@@ -53,33 +53,6 @@ class _splashState extends State<splash> {
       } else {
         Get.off(login());
       }
-
-      // Get.off(() => user != null && role != 'admin'
-      //     ? home_admin()
-      //     : user != null && role == 'user'
-      //         ? home()
-      //         : login());
-      // if (user != null && role == "user") {
-      //   Get.off(home());
-      // } else if (user != null && role == "admin") {
-      //   Get.off(home_admin());
-      // } else {
-      //   Get.off(login());
-      // }
     });
   }
-
-  // Future<void> getData() async {
-  //   await FirebaseFirestore.instance
-  //       .collection("users")
-  //       .doc(user!.uid)
-  //       .get()
-  //       .then((snapshot) async {
-  //     if (snapshot.exists) {
-  //       setState(() {
-  //         role = snapshot.get("role");
-  //       });
-  //     }
-  //   });
-  // }
 }

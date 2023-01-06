@@ -1,6 +1,7 @@
 import 'package:app_pengaduan_masyarakat_bna/intro_screen/login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 registerUser(
@@ -20,8 +21,10 @@ registerUser(
       "user id": userid.uid,
       "role": role
     }).then((value) => {
-          FirebaseAuth.instance.signOut(),
-          Get.to(login()),
+          // FirebaseAuth.instance.signOut(),
+          // Get.to(login()),
         });
-  } on FirebaseAuthException catch (e) {}
+  } on FirebaseAuthException catch (e) {
+    // Get.defaultDialog();
+  }
 }

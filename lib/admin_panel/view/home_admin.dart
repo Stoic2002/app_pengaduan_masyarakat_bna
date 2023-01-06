@@ -1,4 +1,7 @@
+import 'package:app_pengaduan_masyarakat_bna/admin_panel/view/list_aduan_admin.dart';
 import 'package:app_pengaduan_masyarakat_bna/intro_screen/login.dart';
+import 'package:app_pengaduan_masyarakat_bna/shared/util/my_color.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,11 +14,18 @@ class home_admin extends StatefulWidget {
 }
 
 class _home_adminState extends State<home_admin> {
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  Stream<QuerySnapshot<Object?>> streamData() {
+    CollectionReference data = firestore.collection("aduan");
+    return data.orderBy("tanggal", descending: true).snapshots();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('admin'),
+        elevation: 0,
         actions: [
           IconButton(
               onPressed: () {
@@ -23,10 +33,40 @@ class _home_adminState extends State<home_admin> {
                 Get.deleteAll();
                 Get.offAll(login());
               },
-              icon: Icon(Icons.logout))
+              icon: Icon(Icons.logout_outlined))
         ],
+        backgroundColor: "#8E44AD".toColor(),
+        title: Text(
+          'Admin Dashboard',
+          style: TextStyle(
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
-      body: Container(),
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        padding: EdgeInsets.only(left: 15, right: 15),
+        color: "#5B2C6F".toColor(),
+        child: content(),
+      ),
     );
+  }
+
+  Widget content() {
+    return StreamBuilder<QuerySnapshot<Object?>>(
+        stream: streamData(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.active) {
+            var listAllDocument = snapshot.data!.docs;
+            return list_aduan_admin(
+              listAllDocument: listAllDocument,
+            );
+          }
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        });
   }
 }

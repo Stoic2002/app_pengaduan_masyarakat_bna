@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:app_pengaduan_masyarakat_bna/intro_screen/login.dart';
 import 'package:app_pengaduan_masyarakat_bna/user_panel/services/register_service.dart';
 import 'package:app_pengaduan_masyarakat_bna/shared/util/my_color.dart';
 
@@ -114,35 +115,29 @@ class _registerState extends State<register> {
               ),
               Container(
                 child: TextFormField(
-                  controller: passwordCon,
-                  obscureText: true,
+                    controller: passwordCon,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                        label: Text('Password',
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                            )),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30))),
+                    validator: _requeiredConfirmValidator),
+              ),
+              Container(
+                child: TextFormField(
                   decoration: InputDecoration(
-                      label: Text('Password',
+                      label: Text('Verifikasi Password',
                           style: TextStyle(
                             fontFamily: 'Poppins',
                           )),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30))),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "masukkan password";
-                    } else {
-                      return null;
-                    }
-                  },
+                  validator: _requeiredConfirmValidator,
                 ),
               ),
-              // Container(
-              //   child: TextFormField(
-              //     decoration: InputDecoration(
-              //         label: Text('Verifikasi Password',
-              //             style: TextStyle(
-              //               fontFamily: 'Poppins',
-              //             )),
-              //         border: OutlineInputBorder(
-              //             borderRadius: BorderRadius.circular(30))),
-              //   ),
-              // ),
               Container(
                 width: double.infinity,
                 height: 55,
@@ -209,9 +204,44 @@ class _registerState extends State<register> {
             email: uEmail,
             password: uPass,
           )
-          .then((value) => {registerUser(uName, uEmail, uNoTelp, uPass, role)});
+          .then((value) => {
+                registerUser(uName, uEmail, uNoTelp, uPass, role),
+                showSignUpSuccessDialog()
+              });
     } else {
       log('email already taken');
+    }
+  }
+
+  void showSignUpSuccessDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Sign Up Success'),
+          content: Text('Your account has been created successfully.'),
+          actions: <Widget>[
+            ElevatedButton(
+              child: Text('OK'),
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                Get.to(login());
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  String? _requeiredConfirmValidator(String? confirmPasswordText) {
+    if (confirmPasswordText == null || confirmPasswordText.trim().isEmpty) {
+      return 'Form ini dibutuhkan !';
+    }
+    if (passwordCon.text != confirmPasswordText) {
+      return 'Password tidak sama';
+    } else {
+      return null;
     }
   }
 }

@@ -79,10 +79,10 @@ class _profileState extends State<profile> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: "#DFFF00".toColor(),
+        backgroundColor: "#1ABC9C".toColor(),
       ),
       body: Container(
-        color: "#DFFF00".toColor(),
+        color: "#117864".toColor(),
         child: Center(
           child: content(),
         ),

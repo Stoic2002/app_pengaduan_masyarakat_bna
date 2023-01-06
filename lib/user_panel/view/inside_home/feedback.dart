@@ -34,13 +34,13 @@ class _feedbackState extends State<feedback> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: "#FFBF00".toColor(),
+        backgroundColor: "#F39C12".toColor(),
       ),
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        padding: EdgeInsets.all(16.0),
-        color: "#FFBF00".toColor(),
+        padding: EdgeInsets.only(left: 15, right: 15),
+        color: "#9C640C".toColor(),
         child: content(),
       ),
     );

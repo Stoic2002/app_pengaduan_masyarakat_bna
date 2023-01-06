@@ -23,7 +23,13 @@ class _homeState extends State<home> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: "#6495ED".toColor(),
-        leading: Text(''),
+        title: Text(
+          'Home',
+          style: TextStyle(
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         actions: [
           IconButton(
               onPressed: () {
@@ -31,7 +37,7 @@ class _homeState extends State<home> {
                 Get.deleteAll();
                 Get.offAll(login());
               },
-              icon: Icon(Icons.logout))
+              icon: Icon(Icons.logout_outlined))
         ],
       ),
       body: Container(
@@ -106,7 +112,7 @@ class _homeState extends State<home> {
                                 Icon(
                                   Icons.add_circle,
                                   size: 60,
-                                  color: "#DE3163".toColor(),
+                                  color: "#5D6D7E".toColor(),
                                 ),
                                 Text(
                                   'Tambah Aduan',
@@ -134,7 +140,7 @@ class _homeState extends State<home> {
                                 Icon(
                                   Icons.note_add,
                                   size: 60,
-                                  color: "#FF7F50".toColor(),
+                                  color: "#E74C3C".toColor(),
                                 ),
                                 Text(
                                   'Aduan Terbaru',
@@ -162,7 +168,7 @@ class _homeState extends State<home> {
                                 Icon(
                                   Icons.feedback_outlined,
                                   size: 60,
-                                  color: "#FFBF00".toColor(),
+                                  color: "#F39C12".toColor(),
                                 ),
                                 Text(
                                   'Feedback',
@@ -190,7 +196,7 @@ class _homeState extends State<home> {
                                 Icon(
                                   Icons.person_outline_sharp,
                                   size: 65,
-                                  color: "#DFFF00".toColor(),
+                                  color: "#1ABC9C".toColor(),
                                 ),
                                 Text(
                                   'Profile',
