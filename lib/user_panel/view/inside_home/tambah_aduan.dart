@@ -154,16 +154,20 @@ class _tambah_aduanState extends State<tambah_aduan> {
                     controller: dateInput,
                     //editing controller of this TextField
                     decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        prefixIcon: Icon(
-                            color: Colors.lightBlue,
-                            Icons.calendar_today_outlined),
-                        //icon of text field
-                        labelText: "Masukkan Tanggal" //label text of field
-                        ),
+                      label: Text('Tanggal',
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                          )),
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      prefixIcon: Icon(
+                          color: Colors.lightBlue,
+                          Icons.calendar_today_outlined),
+                      //icon of text field
+                      //label text of field
+                    ),
                     readOnly: true,
                     //set it true, so that user will not able to edit text
                     onTap: () async {

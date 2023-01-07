@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:app_pengaduan_masyarakat_bna/intro_screen/login.dart';
-import 'package:app_pengaduan_masyarakat_bna/user_panel/services/register_service.dart';
+import 'package:app_pengaduan_masyarakat_bna/intro_screen/services/register_service.dart';
 import 'package:app_pengaduan_masyarakat_bna/shared/util/my_color.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
