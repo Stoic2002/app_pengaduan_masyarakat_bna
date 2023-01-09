@@ -272,9 +272,23 @@ class _detail_item_adminState extends State<detail_item_admin> {
     );
   }
 
-  TextEditingController progres1 = new TextEditingController();
-  TextEditingController progres2 = new TextEditingController();
-  TextEditingController progres3 = new TextEditingController();
+  TextEditingController progres1 = TextEditingController();
+  TextEditingController progres2 = TextEditingController();
+  TextEditingController progres3 = TextEditingController();
+  void textProgress() {
+    setState(() {
+      progres1.text = widget.detail['progres 1'];
+      progres2.text = widget.detail['progres 2'];
+      progres3.text = widget.detail['progres 3'];
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    textProgress();
+  }
 
   void verificationShow() {
     showDialog(
