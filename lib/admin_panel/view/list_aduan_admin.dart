@@ -1,5 +1,6 @@
 import 'package:app_pengaduan_masyarakat_bna/admin_panel/view/detail_item_admin.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class list_aduan_admin extends StatelessWidget {
   var listAllDocument;
@@ -18,12 +19,15 @@ class list_aduan_admin extends StatelessWidget {
               onTap: () {
                 var detail =
                     listAllDocument[index].data() as Map<String, dynamic>;
+                Get.to(() => detail_item_admin(
+                      detail: detail,
+                    ));
 
-                Route route = MaterialPageRoute(
-                    builder: (context) => detail_item_admin(
-                          detail: detail,
-                        ));
-                Navigator.push(context, route);
+                // Route route = MaterialPageRoute(
+                //     builder: (context) => detail_item_admin(
+                //           detail: detail,
+                //         ));
+                // Navigator.push(context, route);
               },
               child: Container(
                 padding: EdgeInsets.all(10.0),

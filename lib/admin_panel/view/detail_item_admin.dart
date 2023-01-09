@@ -18,8 +18,6 @@ class detail_item_admin extends StatefulWidget {
 }
 
 class _detail_item_adminState extends State<detail_item_admin> {
-  bool _isCompleted = false;
-  int _currentStep = 0;
   // final mq = MediaQueryData.fromWindow(WidgetsBinding.instance.window);
   @override
   Widget build(BuildContext context) {
@@ -146,25 +144,24 @@ class _detail_item_adminState extends State<detail_item_admin> {
                             height: 100,
                             child: TimelineTile(
                               afterLineStyle: LineStyle(
-                                color: _currentStep == 1
-                                    ? Colors.lightBlue
-                                    : Colors.grey,
-                              ),
+                                  color: widget.detail['progres 2'] == ""
+                                      ? Colors.grey
+                                      : Colors.lightBlue),
                               indicatorStyle: IndicatorStyle(
                                   iconStyle: IconStyle(
-                                      iconData: _isCompleted
+                                      iconData: widget.detail['progres 1'] != ""
                                           ? Icons.check
                                           : Icons.circle,
                                       color: Colors.white),
-                                  color: _currentStep == 0
-                                      ? Colors.lightBlue
-                                      : Colors.grey,
+                                  color: widget.detail['progres 1'] == ""
+                                      ? Colors.grey
+                                      : Colors.lightBlue,
                                   width: 30,
                                   height: 30),
                               endChild: Container(
                                 padding: EdgeInsets.only(left: 10),
                                 child: Text(
-                                  'aduan sudah diverifikasi',
+                                  widget.detail['progres 1'],
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: 16,
@@ -180,17 +177,30 @@ class _detail_item_adminState extends State<detail_item_admin> {
                           width: 250,
                           height: 100,
                           child: TimelineTile(
-                            // afterLineStyle: LineStyle(color: Colors.lightBlue),
-                            // beforeLineStyle: LineStyle(color: Colors.lightBlue),
+                            afterLineStyle: LineStyle(
+                                color: widget.detail['progres 3'] == ""
+                                    ? Colors.grey
+                                    : Colors.lightBlue),
+                            beforeLineStyle: LineStyle(
+                                color: widget.detail['progres 2'] == ""
+                                    ? Colors.grey
+                                    : Colors.lightBlue),
                             indicatorStyle: IndicatorStyle(
-                              // color: Colors.lightBlue,
+                              iconStyle: IconStyle(
+                                  iconData: widget.detail['progres 2'] != ""
+                                      ? Icons.check
+                                      : Icons.circle,
+                                  color: Colors.white),
+                              color: widget.detail['progres 2'] == ""
+                                  ? Colors.grey
+                                  : Colors.lightBlue,
                               width: 30,
                               height: 30,
                             ),
                             endChild: Container(
                               padding: EdgeInsets.only(left: 10),
                               child: Text(
-                                'Masalah sedang diselesaikan',
+                                widget.detail['progres 2'],
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
@@ -207,10 +217,19 @@ class _detail_item_adminState extends State<detail_item_admin> {
                             width: 250,
                             height: 100,
                             child: TimelineTile(
-                              // beforeLineStyle:
-                              //     LineStyle(color: Colors.lightBlue),
+                              beforeLineStyle: LineStyle(
+                                  color: widget.detail['progres 3'] == ""
+                                      ? Colors.grey
+                                      : Colors.lightBlue),
                               indicatorStyle: IndicatorStyle(
-                                  // color: Colors.lightBlue,
+                                  iconStyle: IconStyle(
+                                      iconData: widget.detail['progres 3'] != ""
+                                          ? Icons.check
+                                          : Icons.circle,
+                                      color: Colors.white),
+                                  color: widget.detail['progres 3'] == ""
+                                      ? Colors.grey
+                                      : Colors.lightBlue,
                                   width: 30,
                                   height: 30),
                               isFirst: false,
@@ -218,7 +237,7 @@ class _detail_item_adminState extends State<detail_item_admin> {
                               endChild: Container(
                                 padding: EdgeInsets.only(left: 10),
                                 child: Text(
-                                  'done',
+                                  widget.detail['progres 3'],
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: 16,
@@ -271,15 +290,21 @@ class _detail_item_adminState extends State<detail_item_admin> {
               children: [
                 TextFormField(
                   controller: progres1,
-                  decoration: InputDecoration(labelText: 'Progres 1'),
+                  decoration: InputDecoration(
+                    labelText: 'Progres 1',
+                  ),
                 ),
                 TextFormField(
                   controller: progres2,
-                  decoration: InputDecoration(labelText: 'Progres 2'),
+                  decoration: InputDecoration(
+                    labelText: 'Progres 2',
+                  ),
                 ),
                 TextFormField(
                   controller: progres3,
-                  decoration: InputDecoration(labelText: 'Progres 3'),
+                  decoration: InputDecoration(
+                    labelText: 'Progres 3',
+                  ),
                 ),
               ],
             ),
@@ -313,14 +338,21 @@ class _detail_item_adminState extends State<detail_item_admin> {
   // User? user = FirebaseAuth.instance.currentUser;
 
   Future<void> addData() async {
-    FirebaseFirestore.instance
+    final progress = FirebaseFirestore.instance
         .collection('aduan')
         .doc(widget.detail['aduanid'])
-        .collection('feedback')
-        .add({
+        .update({
       "progres 1": progres1.text,
       "progres 2": progres2.text,
       "progres 3": progres3.text,
     });
+    // .collection('feedback')
+    // .snapshots();
+
+    //     .add({
+    //   "progres 1": progres1.text,
+    //   "progres 2": progres2.text,
+    //   "progres 3": progres3.text,
+    // });
   }
 }

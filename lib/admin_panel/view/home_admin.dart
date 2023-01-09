@@ -53,9 +53,9 @@ class _home_adminState extends State<home_admin> {
         stream: streamData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active) {
-            var listAllDocument = snapshot.data!.docs;
+            var listDocs = snapshot.data!.docs;
             return list_aduan_admin(
-              listAllDocument: listAllDocument,
+              listAllDocument: listDocs,
             );
           }
           return Center(

@@ -333,6 +333,9 @@ class _tambah_aduanState extends State<tambah_aduan> {
       "image": imgUrl,
       "userid": userId!.uid,
       "username": uName!,
+      "progres 1": "",
+      "progres 2": "",
+      "progres 3": "",
     });
 
     final String aduanid = doc.id;
