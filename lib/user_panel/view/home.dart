@@ -31,13 +31,7 @@ class _homeState extends State<home> {
           ),
         ),
         actions: [
-          IconButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-                Get.deleteAll();
-                Get.offAll(login());
-              },
-              icon: Icon(Icons.logout_outlined))
+          IconButton(onPressed: logout, icon: Icon(Icons.logout_outlined))
         ],
       ),
       body: Container(
@@ -214,6 +208,58 @@ class _homeState extends State<home> {
           )
         ],
       ),
+    );
+  }
+
+  void logout() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Logout',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: Text(
+            'Apakah anda ingin keluar?',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              child: Text(
+                'Ya',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                Get.deleteAll();
+                Get.offAll(login());
+              },
+            ),
+            ElevatedButton(
+              child: Text(
+                'Tidak',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                Get.back();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

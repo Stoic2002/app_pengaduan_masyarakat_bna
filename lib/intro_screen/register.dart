@@ -218,11 +218,29 @@ class _registerState extends State<register> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Sign Up Success'),
-          content: Text('Your account has been created successfully.'),
+          title: Text(
+            'Sign Up Success',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: Text(
+            'Your account has been created successfully.',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           actions: <Widget>[
             ElevatedButton(
-              child: Text('OK'),
+              child: Text(
+                'OK',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               onPressed: () {
                 FirebaseAuth.instance.signOut();
                 Get.to(login());

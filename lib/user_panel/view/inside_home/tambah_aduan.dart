@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:app_pengaduan_masyarakat_bna/intro_screen/login.dart';
 import 'package:app_pengaduan_masyarakat_bna/shared/util/my_color.dart';
+import 'package:app_pengaduan_masyarakat_bna/user_panel/view/home.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -266,7 +268,8 @@ class _tambah_aduanState extends State<tambah_aduan> {
                       if (_formKey.currentState!.validate()) {
                         addData(judulCon.text, deskCon.text, locCon.text,
                             dateInput.text, _img!);
-                        Get.back();
+
+                        showAddDataSuccessDialog();
                       }
                     },
                     child: Text('Tambah',
@@ -306,7 +309,10 @@ class _tambah_aduanState extends State<tambah_aduan> {
 
   void addData(String judul, String deskripsi, String lokasi, String date,
       XFile image) async {
-    CollectionReference data = firestore.collection("aduan");
+    // Future<String> tambahAduan(Map<String, dynamic> data) async {
+    //   final docRef = await firestore.collection('aduan').add(data);
+    //   return docRef.id;
+    // }
 
     String fileName = DateTime.now().millisecondsSinceEpoch.toString();
 
@@ -319,24 +325,58 @@ class _tambah_aduanState extends State<tambah_aduan> {
       imgUrl = await imgUpload.getDownloadURL();
     } catch (error) {}
 
-    data.add({
+    final DocumentReference doc = await firestore.collection('aduan').add({
       "judul": judul,
       "deskripsi": deskripsi,
       "lokasi": lokasi,
       "tanggal": date,
       "image": imgUrl,
       "userid": userId!.uid,
-      "username": uName!
+      "username": uName!,
     });
+
+    final String aduanid = doc.id;
+
+    doc.update({'aduanid': aduanid});
   }
 
-  // void userRelation() async {
-  //   DocumentSnapshot doc =
-  //       await firestore.collection("users").doc("username").get();
-  //       if(doc.exists){
-  //         doc.data['username'];
-  //       }
-  // }
+  void showAddDataSuccessDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'data upload',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: Text(
+            'Data berhasil ditambahkan',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              child: Text(
+                'OK',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                Get.offAll(home());
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   // void _selectImage() async {
   //   final ImagePicker _picker = ImagePicker();

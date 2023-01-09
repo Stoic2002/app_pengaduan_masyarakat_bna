@@ -186,14 +186,15 @@ class _loginState extends State<login> {
       }
     } on FirebaseException catch (e) {
       print(e.message);
-      Get.defaultDialog(
-        title: "Gagal Login",
-        middleText: "Email atau kata sandi salah",
-        onConfirm: () {
-          Get.back();
-        },
-        textConfirm: "Okey",
-      );
+      // Get.defaultDialog(
+      //   title: "Gagal Login",
+      //   middleText: "Email atau kata sandi salah",
+      //   onConfirm: () {
+      //     Get.back();
+      //   },
+      //   textConfirm: "Okey",
+      // );
+      loginFailed();
     }
   }
 
@@ -214,5 +215,43 @@ class _loginState extends State<login> {
         print('Document does not exist on the database');
       }
     });
+  }
+
+  void loginFailed() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Gagal login',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: Text(
+            'username atau password salah',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              child: Text(
+                'OK',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                Get.back();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }

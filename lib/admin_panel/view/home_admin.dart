@@ -27,13 +27,7 @@ class _home_adminState extends State<home_admin> {
       appBar: AppBar(
         elevation: 0,
         actions: [
-          IconButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-                Get.deleteAll();
-                Get.offAll(login());
-              },
-              icon: Icon(Icons.logout_outlined))
+          IconButton(onPressed: logout, icon: Icon(Icons.logout_outlined))
         ],
         backgroundColor: "#8E44AD".toColor(),
         title: Text(
@@ -68,5 +62,57 @@ class _home_adminState extends State<home_admin> {
             child: CircularProgressIndicator(),
           );
         });
+  }
+
+  void logout() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Logout',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: Text(
+            'Apakah anda ingin keluar?',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              child: Text(
+                'Ya',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                Get.deleteAll();
+                Get.offAll(login());
+              },
+            ),
+            ElevatedButton(
+              child: Text(
+                'Tidak',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                Get.back();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
