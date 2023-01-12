@@ -1,10 +1,16 @@
 import 'package:app_pengaduan_masyarakat_bna/shared/util/my_color.dart';
+import 'package:app_pengaduan_masyarakat_bna/user_panel/view/inside_home/list_feedback.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class detail_feedback extends StatefulWidget {
   var detail;
-  detail_feedback({this.detail, super.key});
+  var dtl;
+  detail_feedback({this.detail, this.dtl, super.key});
 
   @override
   State<detail_feedback> createState() => _detail_feedbackState();
@@ -15,6 +21,20 @@ class _detail_feedbackState extends State<detail_feedback> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          actions: [
+            // Text(
+            //   'hapus',
+            // ),
+            IconButton(
+              onPressed: () {
+                deleteData();
+                Get.back();
+              },
+              icon: widget.detail['progres 3'] == ""
+                  ? Container()
+                  : Icon(Icons.delete),
+            )
+          ],
           elevation: 0,
           title: Text(
             'Detail Aduan',
@@ -243,5 +263,43 @@ class _detail_feedbackState extends State<detail_feedback> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    snapData();
+  }
+
+  String aduanid = "";
+  String imgUrl = "";
+
+  void deleteData() {
+    try {
+      FirebaseFirestore.instance.collection('aduan').doc(aduanid).delete();
+      Reference ref = FirebaseStorage.instance.refFromURL(imgUrl);
+      ref.delete();
+    } catch (e) {
+      print(e);
+    }
+    print(aduanid);
+    print(imgUrl);
+  }
+
+  void snapData() async {
+    User? userid = FirebaseAuth.instance.currentUser;
+    await FirebaseFirestore.instance
+        .collection('aduan')
+        .doc(widget.detail['aduanid'])
+        .get()
+        .then((snap) {
+      if (snap.exists) {
+        setState(() {
+          aduanid = snap.get('aduanid');
+          imgUrl = snap.get('image');
+        });
+      }
+    });
   }
 }

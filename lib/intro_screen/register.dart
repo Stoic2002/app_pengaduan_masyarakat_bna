@@ -128,6 +128,7 @@ class _registerState extends State<register> {
               ),
               Container(
                 child: TextFormField(
+                  obscureText: true,
                   decoration: InputDecoration(
                       label: Text('Verifikasi Password',
                           style: TextStyle(
@@ -208,9 +209,7 @@ class _registerState extends State<register> {
                 registerUser(uName, uEmail, uNoTelp, uPass, role),
                 showSignUpSuccessDialog()
               });
-    } else {
-      log('email already taken');
-    }
+    } else {}
   }
 
   void showSignUpSuccessDialog() {

@@ -38,7 +38,7 @@ class _profileState extends State<profile> {
     });
   }
 
-  void uploadImg() async {
+  Future<void> uploadImg() async {
     final ImagePicker _picker = ImagePicker();
     final XFile? img = await _picker.pickImage(source: ImageSource.gallery);
 
