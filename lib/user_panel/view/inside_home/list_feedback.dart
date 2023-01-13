@@ -17,11 +17,10 @@ class list_feedback extends StatelessWidget {
             InkWell(
               onTap: () {
                 var detail = listAllDocs[index].data() as Map<String, dynamic>;
-                var dtl = listAllDocs[index]['aduanid'];
+
                 Route route = MaterialPageRoute(
                     builder: (context) => detail_feedback(
                           detail: detail,
-                          dtl: dtl,
                         ));
                 Navigator.push(context, route);
               },

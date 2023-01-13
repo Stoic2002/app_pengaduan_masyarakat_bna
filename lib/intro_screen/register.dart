@@ -218,14 +218,14 @@ class _registerState extends State<register> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(
-            'Sign Up Success',
+            'register',
             style: TextStyle(
               fontFamily: 'Poppins',
               fontWeight: FontWeight.bold,
             ),
           ),
           content: Text(
-            'Your account has been created successfully.',
+            'pendaftaran behasil',
             style: TextStyle(
               fontFamily: 'Poppins',
               fontWeight: FontWeight.bold,

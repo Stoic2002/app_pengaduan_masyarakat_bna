@@ -9,8 +9,8 @@ import 'package:timeline_tile/timeline_tile.dart';
 
 class detail_feedback extends StatefulWidget {
   var detail;
-  var dtl;
-  detail_feedback({this.detail, this.dtl, super.key});
+
+  detail_feedback({this.detail, super.key});
 
   @override
   State<detail_feedback> createState() => _detail_feedbackState();
@@ -122,7 +122,7 @@ class _detail_feedbackState extends State<detail_feedback> {
               ),
             ),
             PhysicalModel(
-              color: "#D2B4DE".toColor(),
+              color: "#AF7AC5".toColor(),
               borderRadius: BorderRadius.circular(20),
               elevation: 3,
               child: Container(
