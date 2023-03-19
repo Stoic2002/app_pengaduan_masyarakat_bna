@@ -1,4 +1,5 @@
 import 'package:app_pengaduan_masyarakat_bna/admin_panel/view/home_admin.dart';
+import 'package:app_pengaduan_masyarakat_bna/user_panel/view/dashboard_user.dart';
 import 'package:app_pengaduan_masyarakat_bna/user_panel/view/home.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -46,7 +47,7 @@ class _splashState extends State<splash> {
             if (snap.get('role') == 'admin') {
               Get.off(() => home_admin());
             } else if (snap.get('role') == 'user') {
-              Get.off(() => home());
+              Get.off(() => DashboardUser());
             }
           }
         });

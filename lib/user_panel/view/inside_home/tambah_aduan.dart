@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:app_pengaduan_masyarakat_bna/admin_panel/view/dashboard_admin.dart';
 import 'package:app_pengaduan_masyarakat_bna/intro_screen/login.dart';
 import 'package:app_pengaduan_masyarakat_bna/shared/util/my_color.dart';
+import 'package:app_pengaduan_masyarakat_bna/user_panel/view/dashboard_user.dart';
 import 'package:app_pengaduan_masyarakat_bna/user_panel/view/home.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -372,7 +374,7 @@ class _tambah_aduanState extends State<tambah_aduan> {
                 ),
               ),
               onPressed: () {
-                Get.offAll(home());
+                Get.offAll(DashboardUser());
               },
             ),
           ],

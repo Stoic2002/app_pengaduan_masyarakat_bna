@@ -209,7 +209,47 @@ class _registerState extends State<register> {
                 registerUser(uName, uEmail, uNoTelp, uPass, role),
                 showSignUpSuccessDialog()
               });
-    } else {}
+    } else {
+      showEmailErr();
+    }
+  }
+
+  void showEmailErr() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'register',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: Text(
+            'Email sudah terdaftar',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              child: Text(
+                'OK',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                Get.back();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   void showSignUpSuccessDialog() {

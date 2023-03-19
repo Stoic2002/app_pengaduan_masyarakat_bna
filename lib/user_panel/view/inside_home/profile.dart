@@ -19,6 +19,7 @@ class _profileState extends State<profile> {
   String? uEmail = "";
   String? uPhone = "";
   String? uImage = "";
+  String? uId = "";
   String imgUrl = "";
 
   Future<void> getData() async {
@@ -33,6 +34,7 @@ class _profileState extends State<profile> {
           uEmail = snapshot.data()!['email'];
           uPhone = snapshot.data()!['nomor telepon'];
           uImage = snapshot.data()!['image'];
+          uId = snapshot.data()!['user id'];
         });
       }
     });
@@ -51,12 +53,18 @@ class _profileState extends State<profile> {
       await imgUpload.putFile(File(img!.path));
 
       imgUrl = await imgUpload.getDownloadURL();
+      print(imgUrl);
     } catch (error) {}
 
-    await FirebaseFirestore.instance
-        .collection("users")
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .update({"image": imgUrl});
+    Reference refImg = FirebaseStorage.instance.refFromURL(imgUrl);
+    refImg.delete();
+
+    if (refImg == "") {
+      await FirebaseFirestore.instance
+          .collection("users")
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .update({"image": imgUrl});
+    } else {}
   }
 
   @override
@@ -79,10 +87,9 @@ class _profileState extends State<profile> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: "#1ABC9C".toColor(),
+        backgroundColor: "#2E4053".toColor(),
       ),
       body: Container(
-        color: "#117864".toColor(),
         child: Center(
           child: content(),
         ),
@@ -92,9 +99,9 @@ class _profileState extends State<profile> {
 
   Widget content() {
     return Container(
-      padding: EdgeInsets.all(20.0),
+      padding: EdgeInsets.only(right: 20, left: 20, bottom: 20),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
             child: Column(children: [
@@ -109,11 +116,16 @@ class _profileState extends State<profile> {
               ),
               Container(
                   child: ElevatedButton(
-                      onPressed: uploadImg, child: Icon(Icons.photo_camera)))
+                onPressed: uploadImg,
+                child: Icon(Icons.photo_camera),
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>("#85929E".toColor())),
+              ))
             ]),
           ),
           PhysicalModel(
-            color: Colors.white,
+            color: "#fee5b1".toColor(),
             elevation: 3,
             borderRadius: BorderRadius.circular(30),
             child: Container(
@@ -128,7 +140,7 @@ class _profileState extends State<profile> {
                     children: [
                       Icon(
                         Icons.person_outline,
-                        color: "#40E0D0".toColor(),
+                        color: "#ffcc00".toColor(),
                         size: 30,
                       ),
                       SizedBox(
@@ -148,7 +160,7 @@ class _profileState extends State<profile> {
                     children: [
                       Icon(
                         Icons.email_outlined,
-                        color: "#40E0D0".toColor(),
+                        color: "#ffcc00".toColor(),
                         size: 30,
                       ),
                       SizedBox(
@@ -168,7 +180,7 @@ class _profileState extends State<profile> {
                     children: [
                       Icon(
                         Icons.phone,
-                        color: "#40E0D0".toColor(),
+                        color: "#ffcc00".toColor(),
                         size: 30,
                       ),
                       SizedBox(

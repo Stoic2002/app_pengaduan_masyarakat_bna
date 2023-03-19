@@ -1,9 +1,8 @@
-import 'package:app_pengaduan_masyarakat_bna/user_panel/view/inside_home/detail_feedback.dart';
 import 'package:flutter/material.dart';
 
-class list_feedback extends StatelessWidget {
+class ListItemAkun extends StatelessWidget {
   var listAllDocs;
-  list_feedback({this.listAllDocs, super.key});
+  ListItemAkun({this.listAllDocs, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,18 +15,18 @@ class list_feedback extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                var detail = listAllDocs[index].data() as Map<String, dynamic>;
+                // var detail = listAllDocs[index].data() as Map<String, dynamic>;
 
-                Route route = MaterialPageRoute(
-                    builder: (context) => detail_feedback(
-                          detail: detail,
-                        ));
-                Navigator.push(context, route);
+                // Route route = MaterialPageRoute(
+                //     builder: (context) => detail_feedback(
+                //           detail: detail,
+                //         ));
+                // Navigator.push(context, route);
               },
               child: Container(
                 padding: EdgeInsets.fromLTRB(5, 10, 0, 10),
                 width: MediaQuery.of(context).size.width,
-                height: 145,
+                height: 120,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   // ignore: prefer_const_literals_to_create_immutables
@@ -60,9 +59,9 @@ class list_feedback extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
-                          width: 230,
+                          width: 220,
                           child: Text(
-                            "${(listAllDocs[index].data() as Map<String, dynamic>)["judul"]}",
+                            "${(listAllDocs[index].data() as Map<String, dynamic>)["username"]}",
                             style: TextStyle(
                                 fontSize: 19.0,
                                 fontWeight: FontWeight.bold,
@@ -71,9 +70,9 @@ class list_feedback extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          width: 230,
+                          width: 220,
                           child: Text(
-                            "${(listAllDocs[index].data() as Map<String, dynamic>)["deskripsi"]}",
+                            "${(listAllDocs[index].data() as Map<String, dynamic>)["email"]}",
                             style: TextStyle(
                                 fontSize: 16.0, fontFamily: 'Poppins'),
                             maxLines: 2,
@@ -81,40 +80,15 @@ class list_feedback extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          width: 230,
+                          width: 220,
                           child: Text(
-                            "${(listAllDocs[index].data() as Map<String, dynamic>)["lokasi"]}",
+                            "${(listAllDocs[index].data() as Map<String, dynamic>)["nomor telepon"]}",
                             style: TextStyle(
                                 fontSize: 14.0, fontFamily: 'Poppins'),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                        Container(
-                          width: 220,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(""),
-                              listAllDocs[index].data()['progres 1'] != ""
-                                  ? Row(
-                                      children: [
-                                        Text("Verified",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 15.0,
-                                                fontFamily: 'Poppins'),
-                                            maxLines: 1),
-                                        Icon(
-                                          Icons.verified,
-                                          color: Colors.lightBlue,
-                                        )
-                                      ],
-                                    )
-                                  : Container(),
-                            ],
-                          ),
-                        )
                       ],
                     )
                   ],

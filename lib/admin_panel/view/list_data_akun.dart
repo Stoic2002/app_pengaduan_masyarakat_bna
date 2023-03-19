@@ -1,45 +1,31 @@
+import 'package:app_pengaduan_masyarakat_bna/admin_panel/view/list_item_akun.dart';
 import 'package:app_pengaduan_masyarakat_bna/shared/util/my_color.dart';
-
-import 'package:app_pengaduan_masyarakat_bna/user_panel/view/inside_home/list_feedback.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class feedback extends StatefulWidget {
-  const feedback({super.key});
+class ListDataAkun extends StatefulWidget {
+  const ListDataAkun({super.key});
 
   @override
-  State<feedback> createState() => _feedbackState();
+  State<ListDataAkun> createState() => _ListDataAkunState();
 }
 
-class _feedbackState extends State<feedback> {
-  User? userid = FirebaseAuth.instance.currentUser;
-
+class _ListDataAkunState extends State<ListDataAkun> {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   Stream<QuerySnapshot<Object?>> streamData() {
-    CollectionReference data = firestore.collection("aduan");
-    return data.where("userid", isEqualTo: userid!.uid).snapshots();
+    CollectionReference data = firestore.collection("users");
+    return data.where('role', isEqualTo: 'user').snapshots();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: Text(
-          'Feedback',
-          style: TextStyle(
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: "#2E4053".toColor(),
-      ),
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         padding: EdgeInsets.only(left: 15, right: 15),
+        color: "#5B2C6F".toColor(),
         child: content(),
       ),
     );
@@ -50,13 +36,11 @@ class _feedbackState extends State<feedback> {
         stream: streamData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active) {
-            var listAllDocument = snapshot.data!.docs;
-
-            return list_feedback(
-              listAllDocs: listAllDocument,
+            var listDocs = snapshot.data!.docs;
+            return ListItemAkun(
+              listAllDocs: listDocs,
             );
           }
-
           return Center(
             child: CircularProgressIndicator(),
           );

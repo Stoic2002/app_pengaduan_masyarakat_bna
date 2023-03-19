@@ -83,7 +83,7 @@ class _homeState extends State<home> {
                 width: double.infinity,
                 height: 350,
                 child: GridView.count(
-                  padding: EdgeInsets.all(35.0),
+                  padding: EdgeInsets.all(28.0),
                   crossAxisCount: 2,
                   mainAxisSpacing: 30,
                   crossAxisSpacing: 20,

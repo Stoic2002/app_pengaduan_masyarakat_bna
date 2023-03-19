@@ -24,7 +24,7 @@ class _aduan_terbaruState extends State<aduan_terbaru> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: "#E74C3C".toColor(),
+        backgroundColor: "#2E4053".toColor(),
         title: Text(
           'Aduan Terbaru',
           style: TextStyle(
@@ -36,8 +36,7 @@ class _aduan_terbaruState extends State<aduan_terbaru> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        padding: EdgeInsets.only(left: 15, right: 15),
-        color: "#943126".toColor(),
+        color: Colors.white,
         child: content(),
       ),
     );

@@ -18,6 +18,7 @@ class detail_item_admin extends StatefulWidget {
 }
 
 class _detail_item_adminState extends State<detail_item_admin> {
+  bool isCheked = false;
   // final mq = MediaQueryData.fromWindow(WidgetsBinding.instance.window);
   @override
   Widget build(BuildContext context) {
@@ -127,7 +128,7 @@ class _detail_item_adminState extends State<detail_item_admin> {
                   children: [
                     Container(
                       child: Text(
-                        'Progres Aduan',
+                        'Verifikasi',
                         style: TextStyle(
                           fontFamily: 'Poppins',
                           fontSize: 20,
@@ -253,10 +254,6 @@ class _detail_item_adminState extends State<detail_item_admin> {
                       child: ElevatedButton(
                           onPressed: () {
                             setState(() {
-                              // _currentStep >= 1
-                              //     ? _currentStep += 1
-                              //     : _currentStep = 0;
-                              // _isCompleted = true;
                               verificationShow();
                             });
                           },
@@ -303,18 +300,21 @@ class _detail_item_adminState extends State<detail_item_admin> {
               // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 TextFormField(
+                  maxLength: 50,
                   controller: progres1,
                   decoration: InputDecoration(
                     labelText: 'Progres 1',
                   ),
                 ),
                 TextFormField(
+                  maxLength: 50,
                   controller: progres2,
                   decoration: InputDecoration(
                     labelText: 'Progres 2',
                   ),
                 ),
                 TextFormField(
+                  maxLength: 30,
                   controller: progres3,
                   decoration: InputDecoration(
                     labelText: 'Progres 3',
@@ -360,6 +360,14 @@ class _detail_item_adminState extends State<detail_item_admin> {
       "progres 2": progres2.text,
       "progres 3": progres3.text,
     });
+
+    // Future<void> addCheckValue() async {
+    //   await FirebaseFirestore.instance
+    //       .collection("aduan")
+    //       .doc(widget.detail['aduanid'])
+    //       .update({'checkbox': isCheked});
+    // }
+    
     // .collection('feedback')
     // .snapshots();
 

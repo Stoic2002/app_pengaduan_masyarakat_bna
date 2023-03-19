@@ -1,5 +1,7 @@
+import 'package:app_pengaduan_masyarakat_bna/admin_panel/view/dashboard_admin.dart';
 import 'package:app_pengaduan_masyarakat_bna/admin_panel/view/home_admin.dart';
 import 'package:app_pengaduan_masyarakat_bna/shared/util/my_color.dart';
+import 'package:app_pengaduan_masyarakat_bna/user_panel/view/dashboard_user.dart';
 
 import 'package:app_pengaduan_masyarakat_bna/user_panel/view/home.dart';
 import 'package:app_pengaduan_masyarakat_bna/intro_screen/register.dart';
@@ -209,7 +211,7 @@ class _loginState extends State<login> {
         if (documentSnapshot.get('role') == "admin") {
           Get.off(home_admin());
         } else {
-          Get.off(home());
+          Get.off(DashboardUser());
         }
       } else {
         print('Document does not exist on the database');

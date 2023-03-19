@@ -21,30 +21,31 @@ class _detail_feedbackState extends State<detail_feedback> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          actions: [
-            // Text(
-            //   'hapus',
-            // ),
-            IconButton(
-              onPressed: () {
-                deleteData();
-                Get.back();
-              },
-              icon: widget.detail['progres 3'] == ""
-                  ? Container()
-                  : Icon(Icons.delete),
-            )
-          ],
-          elevation: 0,
-          title: Text(
-            'Detail Aduan',
-            style: TextStyle(
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.bold,
+            actions: [
+              // Text(
+              //   'hapus',
+              // ),
+              IconButton(
+                onPressed: () {
+                  if (widget.detail['progres 3'] != "") {
+                    deleteData();
+                    Get.back();
+                  }
+                },
+                icon: widget.detail['progres 3'] == ""
+                    ? Container()
+                    : Icon(Icons.delete),
+              )
+            ],
+            elevation: 0,
+            title: Text(
+              'Detail Aduan',
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          backgroundColor: "#FFBF00".toColor(),
-        ),
+            backgroundColor: "#2E4053".toColor()),
         body: SingleChildScrollView(
           child: ConstrainedBox(
             constraints: BoxConstraints.tightFor(
@@ -54,7 +55,7 @@ class _detail_feedbackState extends State<detail_feedback> {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               padding: EdgeInsets.only(top: 10, right: 15, left: 15),
-              color: "#FFBF00".toColor(),
+              color: "#2E4053".toColor(),
               child: content(),
             ),
           ),
@@ -63,11 +64,9 @@ class _detail_feedbackState extends State<detail_feedback> {
 
   Widget content() {
     return PhysicalModel(
-      borderRadius: BorderRadius.circular(30),
       elevation: 3,
       color: Colors.white,
       child: Container(
-        padding: EdgeInsets.fromLTRB(15, 10, 10, 20),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Column(
@@ -77,40 +76,45 @@ class _detail_feedbackState extends State<detail_feedback> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 10),
                   width: MediaQuery.of(context).size.width,
                   height: 250,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
                           fit: BoxFit.cover,
                           image: Image.network(widget.detail['image']).image)),
                 ),
-                Container(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Text(
-                    widget.detail['judul'],
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Text(
-                    widget.detail['deskripsi'],
-                    style: TextStyle(fontFamily: 'Poppins', fontSize: 16),
-                  ),
-                ),
-                Container(
-                  // margin: EdgeInsets.only(top: 40),
-                  // padding: EdgeInsets.only(top: 50),
-                  child: Text(
-                    "Lokasi : ${widget.detail['lokasi']}",
-                    style: TextStyle(fontFamily: 'Poppins', fontSize: 16),
-                  ),
-                ),
+                Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          child: Text(
+                            "Lokasi : ${widget.detail['lokasi']}",
+                            style:
+                                TextStyle(fontFamily: 'Poppins', fontSize: 16),
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(top: 15),
+                          child: Text(
+                            widget.detail['judul'],
+                            style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          child: Text(
+                            widget.detail['deskripsi'],
+                            style:
+                                TextStyle(fontFamily: 'Poppins', fontSize: 16),
+                          ),
+                        ),
+                      ],
+                    ))
               ],
             ),
             Padding(
@@ -122,8 +126,7 @@ class _detail_feedbackState extends State<detail_feedback> {
               ),
             ),
             PhysicalModel(
-              color: "#AF7AC5".toColor(),
-              borderRadius: BorderRadius.circular(20),
+              color: "#ffcc00".toColor(),
               elevation: 3,
               child: Container(
                 padding: EdgeInsets.all(10.0),
