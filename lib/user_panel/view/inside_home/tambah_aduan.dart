@@ -101,7 +101,7 @@ class _tambah_aduanState extends State<tambah_aduan> {
           child: Form(
             key: _formKey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
                   child: TextFormField(
@@ -218,45 +218,62 @@ class _tambah_aduanState extends State<tambah_aduan> {
                     },
                   ),
                 ),
-                Container(
-                  child: TextFormField(
-                    enabled: false,
-                    readOnly: true,
-                    controller: _imageController,
-                    decoration: InputDecoration(
-                        hintText: 'foto belum diupload',
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20))),
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all("#6495ED".toColor()),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ))),
-                    onPressed: () async {
-                      final ImagePicker _picker = ImagePicker();
-                      XFile? img =
-                          await _picker.pickImage(source: ImageSource.gallery);
-                      if (img != null) {
-                        setState(() {
-                          _img = img;
-                        });
-                        _imageController.text = img.name;
-                      }
-                    },
-                    child: Text('Upload photo',
-                        style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold)),
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        enabled: false,
+                        readOnly: true,
+                        controller: _imageController,
+                        decoration: InputDecoration(
+                            hintText: 'foto belum diupload',
+                            hintStyle: TextStyle(fontFamily: 'Poppins'),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              bottomLeft: Radius.circular(20),
+                            ))),
+                      ),
+                    ),
+                    Container(
+                      height: 63,
+                      child: ElevatedButton.icon(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all("#85929E".toColor()),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(20),
+                                bottomRight: Radius.circular(20),
+                              ),
+                            ))),
+                        onPressed: () async {
+                          final ImagePicker _picker = ImagePicker();
+                          XFile? img = await _picker.pickImage(
+                              source: ImageSource.gallery);
+                          if (img != null) {
+                            setState(() {
+                              _img = img;
+                            });
+                            _imageController.text = img.name;
+                          }
+                        },
+                        icon: Icon(Icons.photo_camera),
+                        label: Text(
+                          'Upload',
+                          style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.bold),
+                        ),
+                        // child: Text('Upload photo',
+                        //     style: TextStyle(
+                        //         fontFamily: 'Poppins',
+                        //         fontSize: 20,
+                        //         fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                  ],
                 ),
                 Container(
                   child: ElevatedButton(
@@ -265,7 +282,8 @@ class _tambah_aduanState extends State<tambah_aduan> {
                             MaterialStateProperty.all("#2ECC71".toColor()),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder())),
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)))),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         addData(judulCon.text, deskCon.text, locCon.text,
@@ -280,28 +298,6 @@ class _tambah_aduanState extends State<tambah_aduan> {
                             fontSize: 20,
                             fontWeight: FontWeight.bold)),
                   ),
-                  // child: Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //   children: [
-                  //     // ElevatedButton(
-                  //     //   style: ButtonStyle(
-                  //     //       backgroundColor:
-                  //     //           MaterialStateProperty.all("#E74C3C".toColor()),
-                  //     //       shape: MaterialStateProperty.all<
-                  //     //               RoundedRectangleBorder>(
-                  //     //           RoundedRectangleBorder())),
-                  //     //   onPressed: () {
-                  //     //     Navigator.pop(context);
-                  //     //   },
-                  //     //   child: Text(' Batal ',
-                  //     //       style: TextStyle(
-                  //     //           fontFamily: 'Poppins',
-                  //     //           fontSize: 20,
-                  //     //           fontWeight: FontWeight.bold)),
-                  //     // ),
-
-                  //   ],
-                  // ),
                 )
               ],
             ),

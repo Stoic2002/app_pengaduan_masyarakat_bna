@@ -39,7 +39,7 @@ class _detail_feedbackState extends State<detail_feedback> {
             ],
             elevation: 0,
             title: Text(
-              'Detail Aduan',
+              'Detail Feedback',
               style: TextStyle(
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.bold,
@@ -49,7 +49,7 @@ class _detail_feedbackState extends State<detail_feedback> {
         body: SingleChildScrollView(
           child: ConstrainedBox(
             constraints: BoxConstraints.tightFor(
-              height: 900,
+              height: 950,
             ),
             child: Container(
               width: MediaQuery.of(context).size.width,
@@ -131,15 +131,16 @@ class _detail_feedbackState extends State<detail_feedback> {
               child: Container(
                 padding: EdgeInsets.all(10.0),
                 width: MediaQuery.of(context).size.width,
-                height: 350,
+                height: 380,
                 child: Column(
                   children: [
                     Container(
                       child: Text(
                         'Progres Aduan',
                         style: TextStyle(
+                          color: Colors.white,
                           fontFamily: 'Poppins',
-                          fontSize: 20,
+                          fontSize: 25,
                           fontWeight: FontWeight.bold,
                           // color: Colors.white,
                         ),
@@ -172,8 +173,9 @@ class _detail_feedbackState extends State<detail_feedback> {
                                 child: Text(
                                   widget.detail['progres 1'],
                                   style: TextStyle(
+                                    color: Colors.white,
                                     fontFamily: 'Poppins',
-                                    fontSize: 16,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                     // color: Colors.white,
                                   ),
@@ -211,8 +213,9 @@ class _detail_feedbackState extends State<detail_feedback> {
                               child: Text(
                                 widget.detail['progres 2'],
                                 style: TextStyle(
+                                  color: Colors.white,
                                   fontFamily: 'Poppins',
-                                  fontSize: 16,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                   // color: Colors.white,
                                 ),
@@ -248,8 +251,9 @@ class _detail_feedbackState extends State<detail_feedback> {
                                 child: Text(
                                   widget.detail['progres 3'],
                                   style: TextStyle(
+                                    color: Colors.white,
                                     fontFamily: 'Poppins',
-                                    fontSize: 16,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                     // color: Colors.white,
                                   ),

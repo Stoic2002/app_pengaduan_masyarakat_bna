@@ -125,13 +125,13 @@ class _profileState extends State<profile> {
             ]),
           ),
           PhysicalModel(
-            color: "#fee5b1".toColor(),
+            color: "#DE3163".toColor(),
             elevation: 3,
             borderRadius: BorderRadius.circular(30),
             child: Container(
               padding: EdgeInsets.all(20.0),
               width: double.infinity,
-              height: 300,
+              height: 260,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -140,7 +140,7 @@ class _profileState extends State<profile> {
                     children: [
                       Icon(
                         Icons.person_outline,
-                        color: "#ffcc00".toColor(),
+                        color: Colors.white,
                         size: 30,
                       ),
                       SizedBox(
@@ -149,6 +149,7 @@ class _profileState extends State<profile> {
                       Text(
                         uName!,
                         style: TextStyle(
+                          color: Colors.white,
                           fontFamily: 'Poppins',
                           fontSize: 20,
                         ),
@@ -160,7 +161,7 @@ class _profileState extends State<profile> {
                     children: [
                       Icon(
                         Icons.email_outlined,
-                        color: "#ffcc00".toColor(),
+                        color: Colors.white,
                         size: 30,
                       ),
                       SizedBox(
@@ -169,6 +170,7 @@ class _profileState extends State<profile> {
                       Text(
                         uEmail!,
                         style: TextStyle(
+                          color: Colors.white,
                           fontSize: 20,
                           fontFamily: 'Poppins',
                         ),
@@ -180,7 +182,7 @@ class _profileState extends State<profile> {
                     children: [
                       Icon(
                         Icons.phone,
-                        color: "#ffcc00".toColor(),
+                        color: Colors.white,
                         size: 30,
                       ),
                       SizedBox(
@@ -189,6 +191,7 @@ class _profileState extends State<profile> {
                       Text(
                         uPhone!,
                         style: TextStyle(
+                          color: Colors.white,
                           fontSize: 20,
                           fontFamily: 'Poppins',
                         ),
