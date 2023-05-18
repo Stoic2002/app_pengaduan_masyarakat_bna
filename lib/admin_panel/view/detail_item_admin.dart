@@ -367,7 +367,7 @@ class _detail_item_adminState extends State<detail_item_admin> {
     //       .doc(widget.detail['aduanid'])
     //       .update({'checkbox': isCheked});
     // }
-    
+
     // .collection('feedback')
     // .snapshots();
 

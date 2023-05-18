@@ -39,136 +39,171 @@ class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
-        padding: EdgeInsets.only(left: 20, right: 20),
+        color: "#2E4053".toColor(),
+        padding: EdgeInsets.only(left: 15, right: 15),
         child: Center(child: content()),
       ),
     );
   }
 
   Widget content() {
-    return Container(
-      height: 600,
-      child: Form(
-        key: _formKey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Column(
-              children: [
-                Container(
-                  child: Image.asset(
-                    'assets/images/logo.png',
-                    height: 60,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          height: 600,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                padding: EdgeInsets.only(top: 40),
+                child: Text(
+                  'Platform Layanan Pengaduan Banjarnegara',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Poppins',
+                    fontSize: 24,
+                    color: Colors.white,
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.only(top: 20),
-                  child: Text(
-                    'Platform Layanan Pengaduan Banjarnegara',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontFamily: 'Poppins', fontSize: 24),
-                  ),
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                Container(
-                  child: TextFormField(
-                    controller: emailCon,
-                    decoration: InputDecoration(
-                        suffixIcon: Icon(Icons.person_outline),
-                        label: Text('Email',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                            )),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30))),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "masukkan email";
-                      } else {
-                        return null;
-                      }
-                    },
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(top: 20),
-                  child: TextFormField(
-                    obscureText: true,
-                    controller: passCon,
-                    decoration: InputDecoration(
-                        suffixIcon: Icon(Icons.lock),
-                        label: Text('Password',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                            )),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30))),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "masukkan password";
-                      } else {
-                        return null;
-                      }
-                    },
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 75,
-                  padding: EdgeInsets.only(top: 20),
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all("#6495ED".toColor()),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ))),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        loginAuth();
-                      }
-                    },
-                    child: Text('Login',
-                        style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold)),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('Belum punya akun? ',
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                          )),
-                      InkWell(
-                        onTap: () {
-                          Get.to(register());
-                        },
-                        child: Text(
-                          'Register',
-                          style: TextStyle(
-                              color: "#40E0D0".toColor(),
-                              fontFamily: 'Poppins'),
+              ),
+              PhysicalModel(
+                borderRadius: BorderRadius.circular(20),
+                elevation: 2,
+                color: Colors.white,
+                child: Container(
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                  height: 380,
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/images/logo.png',
+                                height: 50,
+                              ),
+                            ),
+                          ],
                         ),
-                      )
-                    ],
+                        Column(
+                          children: [
+                            Container(
+                              child: TextFormField(
+                                controller: emailCon,
+                                decoration: InputDecoration(
+                                    suffixIcon: Icon(Icons.person_outline),
+                                    label: Text('Email',
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                        )),
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(5))),
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return "masukkan email";
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(top: 20),
+                              child: TextFormField(
+                                obscureText: true,
+                                controller: passCon,
+                                decoration: InputDecoration(
+                                    suffixIcon: Icon(Icons.lock),
+                                    label: Text('Password',
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                        )),
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(5))),
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return "masukkan password";
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                              ),
+                            ),
+                            Container(
+                              width: double.infinity,
+                              height: 75,
+                              padding: EdgeInsets.only(top: 20),
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        "#85929E".toColor()),
+                                    shape: MaterialStateProperty.all<
+                                            RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5),
+                                    ))),
+                                onPressed: () {
+                                  if (_formKey.currentState!.validate()) {
+                                    loginAuth();
+                                  }
+                                },
+                                child: Text('Login',
+                                    style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        PhysicalModel(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(15),
+            topRight: Radius.circular(15),
+          ),
+          elevation: 2,
+          color: Colors.white,
+          child: Container(
+            height: 50,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Belum punya akun? ',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                    )),
+                InkWell(
+                  onTap: () {
+                    Get.to(register());
+                  },
+                  child: Text(
+                    'Register',
+                    style: TextStyle(
+                        color: "#40E0D0".toColor(), fontFamily: 'Poppins'),
                   ),
                 )
               ],
-            )
-          ],
-        ),
-      ),
+            ),
+          ),
+        )
+      ],
     );
   }
 

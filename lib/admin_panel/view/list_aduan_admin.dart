@@ -1,3 +1,4 @@
+import 'package:app_pengaduan_masyarakat_bna/admin_panel/view/detail_aduan_admin.dart';
 import 'package:app_pengaduan_masyarakat_bna/admin_panel/view/detail_item_admin.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,7 +20,7 @@ class list_aduan_admin extends StatelessWidget {
               onTap: () {
                 var detail =
                     listAllDocument[index].data() as Map<String, dynamic>;
-                Get.to(() => detail_item_admin(
+                Get.to(() => DetailAduanAdmin(
                       detail: detail,
                     ));
 

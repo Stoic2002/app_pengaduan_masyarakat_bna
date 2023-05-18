@@ -96,7 +96,7 @@ class list_feedback extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(""),
-                              listAllDocs[index].data()['progres 1'] != ""
+                              listAllDocs[index].data()['progres 1'] != false
                                   ? Row(
                                       children: [
                                         Text("Verified",

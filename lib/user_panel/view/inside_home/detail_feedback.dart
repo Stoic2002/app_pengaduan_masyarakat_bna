@@ -27,12 +27,12 @@ class _detail_feedbackState extends State<detail_feedback> {
               // ),
               IconButton(
                 onPressed: () {
-                  if (widget.detail['progres 3'] != "") {
+                  if (widget.detail['progres 3'] != false) {
                     deleteData();
                     Get.back();
                   }
                 },
-                icon: widget.detail['progres 3'] == ""
+                icon: widget.detail['progres 3'] == false
                     ? Container()
                     : Icon(Icons.delete),
               )
@@ -154,16 +154,17 @@ class _detail_feedbackState extends State<detail_feedback> {
                             height: 100,
                             child: TimelineTile(
                               afterLineStyle: LineStyle(
-                                  color: widget.detail['progres 2'] == ""
+                                  color: widget.detail['progres 2'] == false
                                       ? Colors.grey
                                       : Colors.lightBlue),
                               indicatorStyle: IndicatorStyle(
                                   iconStyle: IconStyle(
-                                      iconData: widget.detail['progres 1'] != ""
-                                          ? Icons.check
-                                          : Icons.circle,
+                                      iconData:
+                                          widget.detail['progres 1'] != false
+                                              ? Icons.check
+                                              : Icons.circle,
                                       color: Colors.white),
-                                  color: widget.detail['progres 1'] == ""
+                                  color: widget.detail['progres 1'] == false
                                       ? Colors.grey
                                       : Colors.lightBlue,
                                   width: 30,
@@ -171,9 +172,11 @@ class _detail_feedbackState extends State<detail_feedback> {
                               endChild: Container(
                                 padding: EdgeInsets.only(left: 10),
                                 child: Text(
-                                  widget.detail['progres 1'],
+                                  'Aduan sudah diverifikasi',
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: widget.detail['progres 1'] == false
+                                        ? Colors.grey
+                                        : Colors.white,
                                     fontFamily: 'Poppins',
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -189,20 +192,20 @@ class _detail_feedbackState extends State<detail_feedback> {
                           height: 100,
                           child: TimelineTile(
                             afterLineStyle: LineStyle(
-                                color: widget.detail['progres 3'] == ""
+                                color: widget.detail['progres 3'] == false
                                     ? Colors.grey
                                     : Colors.lightBlue),
                             beforeLineStyle: LineStyle(
-                                color: widget.detail['progres 2'] == ""
+                                color: widget.detail['progres 2'] == false
                                     ? Colors.grey
                                     : Colors.lightBlue),
                             indicatorStyle: IndicatorStyle(
                               iconStyle: IconStyle(
-                                  iconData: widget.detail['progres 2'] != ""
+                                  iconData: widget.detail['progres 2'] != false
                                       ? Icons.check
                                       : Icons.circle,
                                   color: Colors.white),
-                              color: widget.detail['progres 2'] == ""
+                              color: widget.detail['progres 2'] == false
                                   ? Colors.grey
                                   : Colors.lightBlue,
                               width: 30,
@@ -211,9 +214,11 @@ class _detail_feedbackState extends State<detail_feedback> {
                             endChild: Container(
                               padding: EdgeInsets.only(left: 10),
                               child: Text(
-                                widget.detail['progres 2'],
+                                'Masalah sedang diproses',
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: widget.detail['progres 2'] == false
+                                      ? Colors.grey
+                                      : Colors.white,
                                   fontFamily: 'Poppins',
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -230,16 +235,17 @@ class _detail_feedbackState extends State<detail_feedback> {
                             height: 100,
                             child: TimelineTile(
                               beforeLineStyle: LineStyle(
-                                  color: widget.detail['progres 3'] == ""
+                                  color: widget.detail['progres 3'] == false
                                       ? Colors.grey
                                       : Colors.lightBlue),
                               indicatorStyle: IndicatorStyle(
                                   iconStyle: IconStyle(
-                                      iconData: widget.detail['progres 3'] != ""
-                                          ? Icons.check
-                                          : Icons.circle,
+                                      iconData:
+                                          widget.detail['progres 3'] != false
+                                              ? Icons.check
+                                              : Icons.circle,
                                       color: Colors.white),
-                                  color: widget.detail['progres 3'] == ""
+                                  color: widget.detail['progres 3'] == false
                                       ? Colors.grey
                                       : Colors.lightBlue,
                                   width: 30,
@@ -249,9 +255,11 @@ class _detail_feedbackState extends State<detail_feedback> {
                               endChild: Container(
                                 padding: EdgeInsets.only(left: 10),
                                 child: Text(
-                                  widget.detail['progres 3'],
+                                  'Masalah sudah terselesaikan',
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: widget.detail['progres 3'] == false
+                                        ? Colors.grey
+                                        : Colors.white,
                                     fontFamily: 'Poppins',
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,

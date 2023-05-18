@@ -331,14 +331,25 @@ class _tambah_aduanState extends State<tambah_aduan> {
       "image": imgUrl,
       "userid": userId!.uid,
       "username": uName!,
-      "progres 1": "",
-      "progres 2": "",
-      "progres 3": "",
+      "progres 1": false,
+      "progres 2": false,
+      "progres 3": false,
     });
 
     final String aduanid = doc.id;
 
     doc.update({'aduanid': aduanid});
+
+    // await firestore
+    //     .collection('aduan')
+    //     .doc(aduanid)
+    //     .collection('verifikasi')
+    //     .doc()
+    //     .set({
+    //   "progress 1": "",
+    //   "progress 2": "",
+    //   "progress 3": "",
+    // });
   }
 
   void showAddDataSuccessDialog() {

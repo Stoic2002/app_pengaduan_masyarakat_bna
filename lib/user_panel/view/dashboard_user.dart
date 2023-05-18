@@ -33,7 +33,7 @@ class _DashboardUserState extends State<DashboardUser> {
     return Scaffold(
       extendBody: true,
       bottomNavigationBar: SafeArea(
-        minimum: EdgeInsets.only(bottom: 10),
+        minimum: EdgeInsets.only(bottom: 5),
         child: Container(
           padding: EdgeInsets.all(12),
           margin: EdgeInsets.symmetric(horizontal: 20),

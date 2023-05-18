@@ -1,10 +1,12 @@
 import 'dart:io';
 
+import 'package:app_pengaduan_masyarakat_bna/intro_screen/login.dart';
 import 'package:app_pengaduan_masyarakat_bna/shared/util/my_color.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class profile extends StatefulWidget {
@@ -79,6 +81,9 @@ class _profileState extends State<profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(onPressed: logout, icon: Icon(Icons.logout_outlined))
+        ],
         elevation: 0,
         title: Text(
           'Profile',
@@ -119,8 +124,9 @@ class _profileState extends State<profile> {
                 onPressed: uploadImg,
                 child: Icon(Icons.photo_camera),
                 style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>("#85929E".toColor())),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>("#85929E".toColor()),
+                ),
               ))
             ]),
           ),
@@ -204,6 +210,58 @@ class _profileState extends State<profile> {
           )
         ],
       ),
+    );
+  }
+
+  void logout() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Logout',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: Text(
+            'Apakah anda ingin keluar?',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              child: Text(
+                'Ya',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                Get.deleteAll();
+                Get.offAll(login());
+              },
+            ),
+            ElevatedButton(
+              child: Text(
+                'Tidak',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                Get.back();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
